@@ -3,6 +3,7 @@ import PlayGame from "./pages/PlayGame/PlayGame"
 import StartGame from "./pages/StartGame/StartGame"
 
 const App = () => {
+  
   return (
     <>
       <div>
