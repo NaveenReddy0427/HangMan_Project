@@ -6,6 +6,7 @@ const App = () => {
   
   return (
     <>
+    <h1>This is React</h1>
       <div>
         Navbar
       </div>

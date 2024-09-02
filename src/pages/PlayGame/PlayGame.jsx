@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import MaskedText from '../../components/MaskedText/MaskedText';
 
 const PlayGame = () => {
-    return (
-        <div>
+  return (
+    <>
+    <div>
             <h1>Play Game</h1>
+
+            <MaskedText text="humble" usedLetters={['b', 'e']} />
+            <hr/>
+
             <Link to='/start'> Start Game </Link>
-        </div>
-    );
+    </div>
+    </>
+  )
 }
 
 export default PlayGame
