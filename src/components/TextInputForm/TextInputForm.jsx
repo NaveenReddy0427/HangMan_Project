@@ -1,9 +1,8 @@
-// Presentational Layer
+// Presentation component
+import TextInput from "../TextInput/TextInput";
+import Button from "../Button/Button" ;
 
-import TextInput from "../TextInput/TextInput"
-import Button from "../Button/Button"
-
-const TextInputForm = ({handleFormSubmit, handleTextInputChange, value, inputType, setInputType}) => {
+function TextInputForm({ handleFormSubmit, handleTextInputChange, value, inputType, setInputType }) {
     return (
         <form className="flex items-end" onSubmit={handleFormSubmit}>
             <div className="mr-2 flex-1">
@@ -19,7 +18,11 @@ const TextInputForm = ({handleFormSubmit, handleTextInputChange, value, inputTyp
                 <Button
                     styleType="warning"
                     text={inputType === 'password' ? 'Show' : 'Hide'}
-                    onClickHandler={() => setInputType(inputType === 'password' ? 'text' : 'password')}
+                    onClickHandler={(e) => {
+                        e.preventDefault();
+                        setInputType(inputType === 'password' ? 'text' : 'password')
+                    }}
+                    type="button"
                 />
             </div>
 
@@ -31,6 +34,7 @@ const TextInputForm = ({handleFormSubmit, handleTextInputChange, value, inputTyp
             </div>
         </form>
     );
+
 }
 
-export default TextInputForm
+export default TextInputForm;

@@ -1,17 +1,20 @@
-import { getAllCharacters } from "./MaskedTextUtility"
+import { getAllCharacters } from "./MaskedTextUtility";
 
-
-const MaskedText = ({text, usedLetters}) => {
-
-    const letters = getAllCharacters(text, usedLetters).split('')
-
-  return (
-    <>
-    {letters.map((letter, index)=>{
-        return <span key={`letter-${index}`} className="inline-block mx-1">{letter}</span>
-    })}
-    </>
-  )
+function MaskedText({ text, usedLetters }) {
+    const letters = getAllCharacters(text, usedLetters).split('');
+    return (
+        <>
+            {letters.map((letter, index) => {
+                return (
+                    <span key={`letter-${index}`} className="inline-block mx-1 ">{letter}</span>
+                )
+            })}
+        </>
+    )
 }
 
-export default MaskedText
+
+
+export default MaskedText;
+
+// H U M B L E (B and E are Guessed) -> _ _ _ B _ E
