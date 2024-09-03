@@ -1,45 +1,43 @@
+
 const ALPHABETS = new Array(26).fill('').map((e, index) => String.fromCharCode(65 + index));
+// 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
-const LetterButtons = ({ usedLetters, onLetterClick }) => {
-
-    // Convert usedLetters to a Set of uppercase letters
+function LetterButtons({ text, usedLetters, onLetterClick }) {
+    const originalCharacters = new Set(text.toUpperCase().split(''));
     const selectedLetters = new Set(usedLetters.join('').toUpperCase().split(''));
 
-    // Function to determine the text color based on the letter's usage
-    const buttonStyle = (letter) => {
+    const buttonStyle = function(letter) {
         if (selectedLetters.has(letter)) {
-            return 'text-red-700'; // Red text for used letters
+            return `${originalCharacters.has(letter) ? 'bg-green-600  border-green-700' : 'border-[#000] border-4 bg-red-600' }  `
         } else {
-            return 'text-blue-700'; // Blue text for unused letters
+            return 'bg-blue-600 border-blue-700 hover:bg-blue-700'
         }
-    };
-
-    const handleClick = function(event){
-        const character = event.target.value
-        onLetterClick(character)
-
     }
 
-    // Map over ALPHABETS to create buttons with the appropriate style
-    const buttons = ALPHABETS.map((letter) => {
+    const handleClick = function(event) {
+        const character = event.target.value;
+        onLetterClick?.(character);
+    }
+
+    const buttons = ALPHABETS.map(letter => {
         return (
-            <button
+            <button 
                 key={`button-${letter}`}
                 value={letter}
                 disabled={selectedLetters.has(letter)}
                 onClick={handleClick}
-                className={`text-xl h-5 w-5 m-1 focus:outline-none ${buttonStyle(letter)}`}
+                className={`h-12 w-12 m-1 rounded-md focus:outline-none text-white ${buttonStyle(letter)}`}
             >
                 {letter}
             </button>
         );
-    });
+    })
 
     return (
         <>
             {buttons}
         </>
-    );
-};
+    )
+}
 
 export default LetterButtons;
